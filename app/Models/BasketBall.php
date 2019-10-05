@@ -41,6 +41,11 @@ class BasketBall implements ISport
         ]
     ];
 
+    /**
+     * calulate mvp according to player position and scores
+     * @param $matchInfo
+     * @return MVP
+     */
     function calculateMVP($matchInfo)
     {
         $position = $matchInfo['position'];
@@ -59,6 +64,11 @@ class BasketBall implements ISport
         return new MVP($number, $mvb, $sport);
     }
 
+    /**
+     * get rating points table according to player position
+     * @param $position
+     * @return mixed
+     */
     function getRatingTable($position)
     {
         switch ($position) {

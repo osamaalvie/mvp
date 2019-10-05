@@ -31,7 +31,7 @@ class TournamentCommand extends Command
     public function handle()
     {
         $this->call('basket_ball_matches');
-        //Artisan::call('handball_matches');
+        //$this->call('handball_matches');
 
     }
 

@@ -42,20 +42,27 @@ class BasketBallCommand extends Command
 
     }
 
+    /**
+     *
+     */
     public function handle()
     {
+        //get all files under sports/basketball
         $files = $this->filePath . $this->fileprefix;
 
 
         foreach ($this->getFiles($files) as $file) {
 
+            //check if headers are valid
             if ($this->isValidHeaders($file, $this->requiredHeaders)) {
 
                 Excel::import(new BasketBallImport(), $file);
-                Excel::store(new BasketBallExport(), "/sports/mvp/" . basename($file));
+
+                //store data after import the file
+                //Excel::store(new BasketBallExport(), "/sports/mvp/" . basename($file));
 
             } else {
-
+                //move file into failed folder if not valid
                 $this->moveFile($file, $this->failedPath);
 
             }
